@@ -1,5 +1,8 @@
 package Data;
-
+/*
+ * Class that resembles the offer price and quantity required 
+ * variables are specialQuantity and specialPrice
+ */
 public class SpecialPrice {
 	private int specialQuantity;
 	private int specialPrice;

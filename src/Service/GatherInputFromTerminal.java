@@ -13,6 +13,7 @@ public class GatherInputFromTerminal {
 		itemService = new ItemsService();
 		inventoryService = new InventoryService();
 	}
+	//to improve reusability of code, method printBasedOnStringInput is used to redirect to the specific print function
 	public void printBasedOnStringInput(String input, PrintToTerminal printToTerminal) {
 		if(input.equals("start"))
 			printToTerminal.startMenu();
@@ -37,6 +38,9 @@ public class GatherInputFromTerminal {
 		else if(input.equals("update_item_offer_price_inventory"))
 			printToTerminal.printUpdateOfferPrice();
 	}
+	/*To improve reusability of code, method printBasedOnStringInputInvalid is used
+	 * to redirect to the specific print function when the user's input is invalid
+	*/
 	public void printBasedOnStringInputInvalid(String input, PrintToTerminal printToTerminal) {
 		if(input.equals("update_item_quantity_inventory"))
 			printToTerminal.printInvalidQuantity();
@@ -48,6 +52,7 @@ public class GatherInputFromTerminal {
 			printToTerminal.printInvalidOfferPrice();
 		
 	}
+	// get the choice which is an integer from the user 
 	public int getOption(Scanner sc, PrintToTerminal printToTerminal,  String inputFor, Predicate<Integer> validate) {
 		int choice;
 		do {
@@ -66,6 +71,7 @@ public class GatherInputFromTerminal {
 		}while(!validate.test(choice));
 		return choice;
 	}
+	// get the price, quantities which is an integer from the user 
 	public int getItemPriceAndQuantity(Scanner sc, PrintToTerminal printToTerminal, String inputFor, Predicate<Integer> validate) {
 		int choice;
 		do {
@@ -84,12 +90,13 @@ public class GatherInputFromTerminal {
 		}while(!validate.test(choice));
 		return choice;
 	}
-	
+	//delete an item from the cart
 	public boolean deleteItem(Cart cart, PrintToTerminal printToTerminal, Scanner sc) {
 		String deletionItem = getItemToDelete(cart,printToTerminal, sc);
 		int deletionQuantity = getQuantity(cart, deletionItem,printToTerminal, sc);
 		return cart.removeItem(deletionItem, deletionQuantity);
 	}
+	//get the itemName to delete from the user
 	public String getItemToDelete(Cart cart,PrintToTerminal printToTerminal, Scanner sc) {
 		String itemName;
 		do {
@@ -101,6 +108,7 @@ public class GatherInputFromTerminal {
 		}while(!itemService.checkIfItemPresentInCart(cart, itemName));
 		return itemName;
 	}
+	//get the itemName from the user for the updating the item in the inventory
 	public String getItemForInventoryChange(PrintToTerminal printToTerminal, Scanner sc, String inputFor, List<Item> itemsList) {
 		String itemName;
 		do {
@@ -112,6 +120,7 @@ public class GatherInputFromTerminal {
 		}while(!inventoryService.checkIfItemPresentInInventory(itemsList, itemName));
 		return itemName;
 	}
+	//get the itemName from the user for the adding the item in the inventory
 	public String getItemForInventoryAdd(PrintToTerminal printToTerminal, Scanner sc, String inputFor, List<Item> itemsList) {
 		String itemName;
 		do {
@@ -126,6 +135,7 @@ public class GatherInputFromTerminal {
 		}while(inventoryService.checkIfItemPresentInInventory(itemsList, itemName) || itemName.length()!=1);
 		return itemName;
 	}
+	//getting quantity to delete the item in the cart
 	public int getQuantity(Cart cart, String itemName, PrintToTerminal printToTerminal, Scanner sc) {
 		int quantity;
 		do {

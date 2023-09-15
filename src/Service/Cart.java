@@ -14,13 +14,15 @@ public class Cart {
 	public Cart(){
 		items = new HashMap<>();
 	}
-	
+	//add item to the cart
 	public void scanItem(Item item) {
 		items.put(item,(items.getOrDefault(item, 0))+1);
 	}
+	//get all the items in the cart
 	public Map<Item, Integer> getItems(){
 		return items;
 	}
+	//remove item from the cart based on itemQuantity and itemName
 	public boolean removeItem(String itemName, int itemQuantity) {
         for (Item item : items.keySet()) {
             if (item.getItemName().equalsIgnoreCase(itemName)) {
@@ -34,24 +36,7 @@ public class Cart {
         }
         return false;
 	}
-	public String calculateRunningTotal() {
-		int totalPrice=0;
-		for(Item item : items.keySet()) {
-			SpecialPrice specialPriceOb=item.getSpecialPrice();
-			if(specialPriceOb==null) {
-				totalPrice+=item.getItemPrice()*items.get(item);
-			}else {
-				int specialQuantity = specialPriceOb.getSpecialQuantity();
-				int specialPrice = specialPriceOb.getSpecialPrice();
-				int itemQuantity = items.get(item);
-				int numOfItemsEligibleForSpecialPrice = Math.floorDiv(itemQuantity,specialQuantity);
-				int numOfItemsNotEligibleForSpecialPrice = itemQuantity%specialQuantity;
-				totalPrice+=specialPrice*numOfItemsEligibleForSpecialPrice;
-				totalPrice+=item.getItemPrice()*numOfItemsNotEligibleForSpecialPrice;
-			}
-		}
-		return String.valueOf(formatAmount(((float)totalPrice)/100));
-	} 
+	//calculate Total for the items in the cart
 	public String calculateTotal() {
 		int totalPrice=0;
 		for(Item item : items.keySet()) {

@@ -130,9 +130,7 @@ public class PrintToTerminal {
 	public void printItemNotFound() {
 	    System.err.print("Item not found!!!\n");
 	}
-	public void printRunningTotal(Cart cart) {
-		System.out.println("Running Total : £"+cart.calculateRunningTotal()+"\n");
-	}
+	//center align the string input
 	private String centerAlign(String text, int width) {
 	    int padding = Math.max(0, (width - text.length()) / 2);
 	    StringBuilder centeredText = new StringBuilder(width);
@@ -147,7 +145,7 @@ public class PrintToTerminal {
 	    
 	    return centeredText.toString();
 	}
-	
+	//right align the string input
 	private String rightAlign(String text, int width) {
 	    int padding = Math.max(0, width - text.length());
 	    StringBuilder alignedText = new StringBuilder(width);

@@ -9,6 +9,7 @@ import Data.Item;
 import Data.LoadDefaultItems;
 
 public class SuperMarket {
+	 // Member variable declarations
 	private Cart cart;
 	private LoadDefaultItems loadDefaultItems;
 	private PrintToTerminal printToTerminal;
@@ -28,10 +29,11 @@ public class SuperMarket {
 			superMarket.start();
 		}
 	}
+	// Constructor to initialize objects and load default items
 	public SuperMarket() {
-		
 		/*Initializing objects of classes 
-		 * Cart, LoadDefaultItems, PrintToTerminal, ItemsService, GatherInputFromTerminal */
+		 * Cart, LoadDefaultItems, PrintToTerminal, ItemsService, GatherInputFromTerminal 
+		 */
 		cart = new Cart();
 		loadDefaultItems = new LoadDefaultItems();
 		printToTerminal = new PrintToTerminal();
@@ -45,6 +47,7 @@ public class SuperMarket {
 		itemsList=loadDefaultItems.addDefaultItems();
 		
 	}
+	// Method to start the supermarket application
 	public void start() {
 		printToTerminal.welcomeText();
 		int choice = gatherInputFromTerminal.getOption(sc, printToTerminal, 
@@ -56,6 +59,7 @@ public class SuperMarket {
 		else
 			System.exit(0);
 	}
+	// Method for inventory management
 	public void inventoryManagement() {
 		inventoryMangement = true;
 		int choice = gatherInputFromTerminal.getOption(sc, printToTerminal, 
@@ -71,6 +75,7 @@ public class SuperMarket {
 										gatherInputFromTerminal, itemsList);
 		}
 	}
+	// Method for scanning items and managing the shopping cart
 	public void scanningItems() {
 		int choice=-1;
 		while(true) {

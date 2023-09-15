@@ -1,5 +1,10 @@
 package Data;
-
+/* Item class consists of itemID, itemName, itemPrice, specialPrice;
+ * two constructors with Item(int itemID, String itemName, int itemPrice)
+ * Item(int itemID, String itemName, int itemPrice, SpecialPrice specialPrice)
+ * one method  void updateItem(String itemName, int itemPrice, SpecialPrice specialPrice) 
+ * getters for the variables itemID, itemName, itemPrice, specialPrice
+*/
 public class Item {
 	private int itemID;
 	private String itemName;

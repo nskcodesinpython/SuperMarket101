@@ -1,5 +1,7 @@
 package Data;
-
+/*
+ * Loading default items to the inventory and returning List<Item> itemsList
+ */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class LoadDefaultItems {
 		List<Item> itemsList = new ArrayList<>();
 		SpecialPrice special = new SpecialPrice(2,40);
 		Item item1 = new Item(id++,"A",30,special);
-		Item item2 = new Item(id++,"B",25,special);
+		Item item2 = new Item(id++,"B",25);
 		SpecialPrice special1 = new SpecialPrice(2,30);
 		Item item3 = new Item(id++,"C",20,special1);
 		itemsList.add(item1);
